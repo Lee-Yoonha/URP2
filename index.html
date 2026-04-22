@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>설문 배정 중...</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <p>설문으로 이동 중입니다...</p>
+
+  <script>
+    const links = [
+      "https://forms.gle/6Aoa49ETjemnkNL9A",
+      "https://forms.gle/6ohNnLhfRucKeq8Z9",
+      "https://forms.gle/UdoYgqebULh9gAiDA",
+      "https://forms.gle/UpKA7uV19Pcx2eWg6"
+    ];
+
+    const storageKey = "assignedSurveyLink";
+
+    let assignedLink = localStorage.getItem(storageKey);
+
+    if (!assignedLink) {
+      const randomIndex = Math.floor(Math.random() * links.length);
+      assignedLink = links[randomIndex];
+      localStorage.setItem(storageKey, assignedLink);
+    }
+
+    window.location.replace(assignedLink);
+  </script>
+</body>
+</html>
